@@ -1,15 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../styles/Top.css";
+import CartButton from "../components/CartButton.tsx";
 
 const Top: React.FC = () => {
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
+    <nav className="navbar">
+      <ul className="nav-list">
+        <li className="nav-item">
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
         </li>
-        <li>
-          <Link to="/shop">Shop</Link>
+        <li className="nav-item">
+          <Link to="/shop" className="nav-link">
+            Shop
+          </Link>
+        </li>
+        <li className="nav-item">
+          <CartButton />
         </li>
       </ul>
     </nav>

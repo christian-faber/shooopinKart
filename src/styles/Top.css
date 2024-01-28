@@ -1,0 +1,26 @@
+.navbar {
+  background-color: #333; /* You can customize the background color */
+  padding: 10px; /* Adjust the padding as needed */
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-item {
+  margin-right: 15px; /* Adjust the spacing between items */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white; /* You can customize the text color */
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.nav-link:hover {
+  text-decoration: underline; /* Add underline on hover */
+}

@@ -1,24 +1,26 @@
 // ShoppingCart.tsx
-import React from "react";
-import { useShoppingCart } from "react-use-cart";
+import React, { useState } from "react";
+import { useCart } from "react-use-cart";
 import "../styles/ShoppingCart.css";
 
 const ShoppingCart: React.FC = () => {
-  const { cart, updateItemQuantity, removeItem } = useShoppingCart();
+  const { items, updateItemQuantity, removeItem } = useCart();
+  const [showCart, setShowCart] = useState(true); // Make sure to initialize showCart state
 
   const handleQuantityChange = (itemId: string, newQuantity: number) => {
     updateItemQuantity(itemId, newQuantity);
   };
+
   const handleCloseCart = () => {
     setShowCart(false);
   };
 
   return (
-    <div className="shopping-cart">
+    <div className={`shopping-cart ${showCart ? "show" : ""}`}>
       <div className="cart-overlay" onClick={() => handleCloseCart()}></div>
       <div className="cart-container">
         <h2>Your Shopping Cart</h2>
-        {Object.values(cart).map((item) => (
+        {Object.values(items).map((item) => (
           <div key={item.id} className="cart-item">
             <div className="item-details">
               <p>{item.name}</p>
