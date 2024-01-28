@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import "../styles/Top.css";
 import CartButton from "../components/CartButton.tsx";
 
-const Top: React.FC = () => {
+interface TopProps {
+  handleToggleCart: () => void;
+}
+
+const Top: React.FC<TopProps> = ({ handleToggleCart }) => {
   return (
     <nav className="navbar">
       <ul className="nav-list">
@@ -18,7 +22,7 @@ const Top: React.FC = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <CartButton />
+          <CartButton onClick={handleToggleCart} />
         </li>
       </ul>
     </nav>

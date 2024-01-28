@@ -1,51 +1,41 @@
 // ShoppingCart.tsx
-import React, { useState } from "react";
+import React from "react";
 import { useCart } from "react-use-cart";
+import Box from "./Box";
 import "../styles/ShoppingCart.css";
 
-const ShoppingCart: React.FC = () => {
+interface ShoppingCartProps {
+  handleToggleCart: () => void;
+}
+
+const ShoppingCart: React.FC<ShoppingCartProps> = ({ handleToggleCart }) => {
   const { items, updateItemQuantity, removeItem } = useCart();
-  const [showCart, setShowCart] = useState(true); // Make sure to initialize showCart state
 
   const handleQuantityChange = (itemId: string, newQuantity: number) => {
     updateItemQuantity(itemId, newQuantity);
   };
 
-  const handleCloseCart = () => {
-    setShowCart(false);
-  };
-
   return (
-    <div className={`shopping-cart ${showCart ? "show" : ""}`}>
-      <div className="cart-overlay" onClick={() => handleCloseCart()}></div>
+    <div className="shopping-cart">
+      <div className="cart-overlay" onClick={handleToggleCart}></div>
       <div className="cart-container">
         <h2>Your Shopping Cart</h2>
         {Object.values(items).map((item) => (
-          <div key={item.id} className="cart-item">
-            <div className="item-details">
-              <p>{item.name}</p>
-              <p>Price: ${item.price.toFixed(2)}</p>
-            </div>
-            <div className="quantity-controls">
-              {item.quantity > 1 ? (
-                <button
-                  onClick={() =>
-                    handleQuantityChange(item.id, item.quantity - 1)
-                  }
-                >
-                  -
-                </button>
-              ) : (
-                <button onClick={() => removeItem(item.id)}>🗑️</button>
-              )}
-              <span>{item.quantity}</span>
-              <button
-                onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
-              >
-                +
-              </button>
-            </div>
-          </div>
+          <Box
+            key={item.id}
+            title={item.name}
+            image={item.image} // Replace with your image property
+            price={item.price}
+            quantity={item.quantity}
+            subtotal={item.quantity * item.price}
+            increaseQuantity={() =>
+              handleQuantityChange(item.id, item.quantity + 1)
+            }
+            decreaseQuantity={() =>
+              handleQuantityChange(item.id, item.quantity - 1)
+            }
+            removeItem={() => removeItem(item.id)}
+          />
         ))}
       </div>
     </div>
