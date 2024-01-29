@@ -5,8 +5,12 @@ interface CartButtonProps {
   onClick: () => void;
 }
 
-const CartButton: React.FC<CartButtonProps> = ({ onClick }) => {
-  const { items, removeItem } = useCart();
+const CartButton: React.FC<CartButtonProps> = ({
+  onClick,
+}: {
+  onClick: () => void;
+}) => {
+  const { items } = useCart();
   const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
@@ -16,7 +20,6 @@ const CartButton: React.FC<CartButtonProps> = ({ onClick }) => {
 
   const toggleCart = () => {
     setShowCart((prevShowCart) => !prevShowCart);
-    // Invoke the onClick function when toggling the cart
     onClick();
   };
 
@@ -24,16 +27,6 @@ const CartButton: React.FC<CartButtonProps> = ({ onClick }) => {
     <div>
       <button onClick={toggleCart}>Toggle Cart</button>
       <div className="cart-counter">{Object.keys(items).length}</div>
-      {showCart && (
-        <div className="cart-content">
-          {Object.values(items).map((item) => (
-            <div key={item.id}>
-              <p>{item.name}</p>
-              <button onClick={() => removeItem(item.id)}>Remove</button>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

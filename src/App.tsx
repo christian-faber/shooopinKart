@@ -21,11 +21,11 @@ const App: React.FC = () => {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Top handleToggleCart={handleToggleCart} />
-        {showCart && <ShoppingCart handleToggleCart={handleToggleCart} />}
         <Routes>
           <Route path="/shop" element={<Shop />} />
           <Route path="/" element={<Home />} />
         </Routes>
+        {showCart && <ShoppingCart handleToggleCart={handleToggleCart} />}
       </Router>
     </QueryClientProvider>
   );

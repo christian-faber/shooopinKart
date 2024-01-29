@@ -1,10 +1,9 @@
-// Box.tsx
 import React from "react";
 import "../styles/Box.css";
 
 interface BoxProps {
   title: string;
-  image: string;
+  image: string; // Replace with the actual type for image
   price: number;
   quantity: number;
   subtotal: number;
@@ -25,18 +24,17 @@ const Box: React.FC<BoxProps> = ({
 }) => {
   return (
     <div className="box">
-      <img src={image} alt={title} />
-      <div className="box-details">
-        <h3>{title}</h3>
-        <p>Price: ${price.toFixed(2)}</p>
-        <p>Quantity: {quantity}</p>
-        <p>Subtotal: ${subtotal.toFixed(2)}</p>
+      <p>{title}</p>
+      <div className="img-container">
+        <img src={image} alt={title} />
+      </div>
+      <p>Price: ${price.toFixed(2)}</p>
+      <p>Quantity: {quantity}</p>
+      <p>Subtotal: ${subtotal.toFixed(2)}</p>
+      <div className="control">
+        <button onClick={removeItem}>🗑️</button>
+        <button onClick={decreaseQuantity}>-</button>
         <button onClick={increaseQuantity}>+</button>
-        {quantity > 1 ? (
-          <button onClick={decreaseQuantity}>-</button>
-        ) : (
-          <button onClick={removeItem}>🗑️</button>
-        )}
       </div>
     </div>
   );
