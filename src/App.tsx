@@ -12,6 +12,7 @@ const queryClient = new QueryClient();
 
 const App: React.FC = () => {
   const [showCart, setShowCart] = useState(false); // Manage the cart visibility state
+  const [pageName, setPageName] = useState("Home");
 
   const handleToggleCart = () => {
     setShowCart((prevShowCart) => !prevShowCart);
@@ -20,7 +21,13 @@ const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <Top handleToggleCart={handleToggleCart} />
+        <Top
+          handleToggleCart={handleToggleCart}
+          showCart={showCart}
+          setShowCart={setShowCart}
+          pageName={pageName}
+          setPageName={setPageName}
+        />
         <Routes>
           <Route path="/shop" element={<Shop />} />
           <Route path="/" element={<Home />} />

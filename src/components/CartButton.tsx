@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "react-use-cart";
+import "../styles/CartButton.css";
+import { FaCartShopping } from "react-icons/fa6";
 
 interface CartButtonProps {
   onClick: () => void;
@@ -10,7 +12,7 @@ const CartButton: React.FC<CartButtonProps> = ({
 }: {
   onClick: () => void;
 }) => {
-  const { items } = useCart();
+  const { items, removeItem } = useCart();
   const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
@@ -24,8 +26,10 @@ const CartButton: React.FC<CartButtonProps> = ({
   };
 
   return (
-    <div>
-      <button onClick={toggleCart}>Toggle Cart</button>
+    <div className="cart-btn-container">
+      <button className="toggle-cart-btn" onClick={toggleCart}>
+        <FaCartShopping />
+      </button>
       <div className="cart-counter">{Object.keys(items).length}</div>
     </div>
   );

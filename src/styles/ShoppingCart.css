@@ -29,7 +29,6 @@
   width: 90%;
   padding: 20px;
   max-width: 800px;
-  overflow: scroll;
   color: black;
 }
 
@@ -37,14 +36,18 @@
   display: flex;
 }
 
-.products-cart {
-  width: 75%;
-}
-
 .totals {
-  width: 25%;
+  margin-top: 50px;
+  font-size: 10px;
+  margin-left: 50px;
 }
 
 .cart-container h2 {
   margin-bottom: 15px;
+}
+
+.products-cart {
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 700px; /* Adjust the max height as needed */
+  border: solid 1px lightgray;
 }

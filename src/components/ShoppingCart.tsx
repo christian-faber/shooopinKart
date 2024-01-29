@@ -51,8 +51,8 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({ handleToggleCart }) => {
             ))}
           </div>
           <div className="totals">
-            <h1>Number of items: {totalQuantity}</h1>
-            <h1>Total Price: ${totalPrice.toFixed(2)}</h1>
+            <h1>{totalQuantity} Items</h1>
+            <h1>${totalPrice.toFixed(2)} Total Price</h1>
           </div>
         </div>
       </div>

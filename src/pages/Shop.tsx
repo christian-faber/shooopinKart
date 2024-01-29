@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../components/Card.tsx";
 import { useQuery } from "@tanstack/react-query";
+import "../styles/Shop.css";
 
 const fetchItems = async () => {
   const response = await fetch("https://fakestoreapi.com/products");
@@ -50,7 +51,6 @@ const Shop: React.FC = () => {
 
   return (
     <div>
-      <h2>Shop</h2>
       <div className="card-container">
         {items.map((item: Item) => (
           <Card

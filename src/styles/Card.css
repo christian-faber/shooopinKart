@@ -1,6 +1,6 @@
 .shop-card {
-  width: 900px; /* Adjust the width as needed */
-  height: 200px; /* Same value as width for a square shape */
+  width: 100%%; /* Adjust the width as needed */
+  height: 300px; /* Same value as width for a square shape */
   border-radius: 25px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1); /* Adjust shadow values as needed */
   background-color: #fff; /* Set your preferred background color */

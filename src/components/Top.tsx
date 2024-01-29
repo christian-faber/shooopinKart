@@ -7,24 +7,41 @@ interface TopProps {
   handleToggleCart: () => void;
 }
 
-const Top: React.FC<TopProps> = ({ handleToggleCart }) => {
+const Top: React.FC<TopProps> = ({
+  handleToggleCart,
+  pageName,
+  setPageName,
+}) => {
   return (
     <nav className="navbar">
-      <ul className="nav-list">
-        <li className="nav-item">
-          <Link to="/" className="nav-link">
-            Home
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/shop" className="nav-link">
-            Shop
-          </Link>
-        </li>
-        <li className="nav-item">
-          <CartButton onClick={handleToggleCart} />
-        </li>
-      </ul>
+      <div className="title">
+        <h1>{pageName}</h1>
+      </div>
+      <div className="nav-list-container">
+        <ul className="nav-list">
+          <li className="nav-item">
+            <Link
+              to="/"
+              className="nav-link"
+              onClick={() => setPageName("Home")}
+            >
+              Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/shop"
+              className="nav-link"
+              onClick={() => setPageName("Shop")}
+            >
+              Shop
+            </Link>
+          </li>
+          <li className="nav-item">
+            <CartButton onClick={handleToggleCart} />
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 };
