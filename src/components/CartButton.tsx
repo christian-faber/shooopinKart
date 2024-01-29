@@ -1,33 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useCart } from "react-use-cart";
 import "../styles/CartButton.css";
 import { FaCartShopping } from "react-icons/fa6";
 
 interface CartButtonProps {
-  onClick: () => void;
+  handleToggleCart: () => void;
 }
 
-const CartButton: React.FC<CartButtonProps> = ({
-  onClick,
-}: {
-  onClick: () => void;
-}) => {
-  const { items, removeItem } = useCart();
-  const [showCart, setShowCart] = useState(false);
+const CartButton: React.FC<CartButtonProps> = ({ handleToggleCart }) => {
+  const { items } = useCart();
 
   useEffect(() => {
     const itemCount = Object.keys(items).length;
     console.log("Cart Count:", itemCount);
   }, [items]);
 
-  const toggleCart = () => {
-    setShowCart((prevShowCart) => !prevShowCart);
-    onClick();
-  };
-
   return (
     <div className="cart-btn-container">
-      <button className="toggle-cart-btn" onClick={toggleCart}>
+      <button className="toggle-cart-btn" onClick={handleToggleCart}>
         <FaCartShopping />
       </button>
       <div className="cart-counter">{Object.keys(items).length}</div>

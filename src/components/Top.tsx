@@ -5,6 +5,8 @@ import CartButton from "../components/CartButton.tsx";
 
 interface TopProps {
   handleToggleCart: () => void;
+  pageName: string;
+  setPageName: (name: string) => void;
 }
 
 const Top: React.FC<TopProps> = ({
@@ -38,7 +40,7 @@ const Top: React.FC<TopProps> = ({
             </Link>
           </li>
           <li className="nav-item">
-            <CartButton onClick={handleToggleCart} />
+            <CartButton handleToggleCart={handleToggleCart} />
           </li>
         </ul>
       </div>

@@ -11,7 +11,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 const App: React.FC = () => {
-  const [showCart, setShowCart] = useState(false); // Manage the cart visibility state
+  const [showCart, setShowCart] = useState(false);
   const [pageName, setPageName] = useState("Home");
 
   const handleToggleCart = () => {
@@ -23,8 +23,6 @@ const App: React.FC = () => {
       <Router>
         <Top
           handleToggleCart={handleToggleCart}
-          showCart={showCart}
-          setShowCart={setShowCart}
           pageName={pageName}
           setPageName={setPageName}
         />
